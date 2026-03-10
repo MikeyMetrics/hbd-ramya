@@ -3,29 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuku Cafe | Home</title>
+    <title>Cuku Cafe | Welcome</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap" rel="stylesheet">
     <style>
-        body { background: #0a0a0a; color: #fff; font-family: 'Outfit', sans-serif; text-align: center; margin: 0; }
-        nav { padding: 20px; background: #111; display: flex; justify-content: center; gap: 20px; }
-        nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0a; color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+
+        /* --- Welcome Animation (Preloader) --- */
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
+        }
+        .loader-text {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #e67e22;
+            letter-spacing: 5px;
+            animation: pulse 1.5s infinite alternate;
+        }
+        @keyframes pulse {
+            from { opacity: 0.3; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1.05); }
+        }
+
+        /* --- Navbar --- */
+        nav { padding: 20px; background: rgba(17, 17, 17, 0.8); backdrop-filter: blur(10px); display: flex; justify-content: center; gap: 20px; position: fixed; width: 100%; top: 0; z-index: 100; border-bottom: 1px solid #333; }
+        nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
         nav a:hover { color: #e67e22; }
-        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        h1 { font-size: 4rem; color: #e67e22; margin: 0; }
-        .btn { background: #e67e22; color: #000; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 20px; display: inline-block; }
+
+        /* --- Hero Section (Attractive) --- */
+        .hero { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1200'); 
+            background-size: cover; 
+            background-position: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero h1 { font-size: 4.5rem; color: #e67e22; line-height: 1; margin-bottom: 10px; animation: fadeInUp 1s ease 3.5s both; }
+        .hero p { font-size: 1.2rem; opacity: 0.8; max-width: 500px; animation: fadeInUp 1s ease 3.8s both; }
+        
+        .btn-group { margin-top: 30px; animation: fadeInUp 1s ease 4s both; }
+        .btn { background: #e67e22; color: #000; padding: 15px 35px; text-decoration: none; border-radius: 50px; font-weight: 900; display: inline-block; transition: 0.3s; box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3); }
+        .btn:hover { transform: scale(1.05); background: #fff; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Decorative Elements --- */
+        .mikey-tag { position: absolute; bottom: 30px; font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px; }
     </style>
 </head>
 <body>
+
+    <div id="loader">
+        <div class="loader-text">CUKU CAFE...</div>
+    </div>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="menu.html">Menu</a>
         <a href="contact.html">Contact</a>
     </nav>
+
     <div class="hero">
-        <h1>CUKU CAFE</h1>
-        <p>Ranchi's Best Vibe. Now Digital.</p>
-        <a href="menu.html" class="btn">Explore Menu</a>
+        <h1>CUKU<br>CAFE</h1>
+        <p>Experience the most aesthetic vibe in Ranchi. Peace, Coffee, and Memories.</p>
+        <div class="btn-group">
+            <a href="menu.html" class="btn">DISCOVER MENU</a>
+        </div>
+        <div class="mikey-tag">POWERED BY MIKEY METRICS</div>
     </div>
+
+    <script>
+        // Welcome Animation Logic (3 seconds)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 800);
+            }, 3000); // 3000ms = 3 seconds
+        });
+    </script>
 </body>
-</html>
+    </html>
