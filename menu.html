@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Cuku Cafe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0a; color: #fff; font-family: 'Outfit', sans-serif; }
+        
+        /* Navigation Bar */
+        nav { padding: 20px; background: #111; display: flex; justify-content: center; gap: 20px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #333; }
+        nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #e67e22; }
+
+        /* Menu Header */
+        .header { padding: 60px 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1000'); background-size: cover; background-position: center; }
+        h1 { font-size: 3.5rem; color: #e67e22; }
+
+        /* Menu Grid */
+        .menu-section { padding: 50px 20px; max-width: 1000px; margin: 0 auto; }
+        h2 { border-bottom: 2px solid #e67e22; display: inline-block; margin-bottom: 30px; padding-bottom: 5px; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        .menu-item { background: #151515; padding: 20px; border-radius: 20px; border: 1px solid #222; transition: 0.3s; }
+        .menu-item:hover { border-color: #e67e22; transform: translateY(-5px); }
+        .item-info { display: flex; justify-content: space-between; align-items: center; }
+        .item-name { font-size: 1.2rem; font-weight: 600; }
+        .item-price { color: #e67e22; font-weight: 900; }
+        .item-desc { font-size: 0.8rem; opacity: 0.5; margin-top: 5px; }
+
+        footer { text-align: center; padding: 40px; opacity: 0.4; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="menu.html" style="color: #e67e22;">Menu</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header">
+        <h1>OUR MENU</h1>
+        <p>A Sip of Happiness</p>
+    </div>
+
+    <section class="menu-section">
+        <h2>Specialty Coffee</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Hazelnut Latte</span>
+                    <span class="item-price">₹149</span>
+                </div>
+                <p class="item-desc">Premium espresso with smooth hazelnut syrup.</p>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Cold Coffee</span>
+                    <span class="item-price">₹120</span>
+                </div>
+                <p class="item-desc">Ranchi's favorite thick and creamy coffee.</p>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Caramel Macchiato</span>
+                    <span class="item-price">₹160</span>
+                </div>
+                <p class="item-desc">Sweet caramel drizzle over rich espresso.</p>
+            </div>
+        </div>
+
+        <h2>Quick Bites</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="info">
+                    <div class="item-info">
+                        <span class="item-name">Peri Peri Pizza</span>
+                        <span class="item-price">₹249</span>
+                    </div>
+                </div>
+                <p class="item-desc">Spicy peri-peri chicken/paneer with extra cheese.</p>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Classic Burger</span>
+                    <span class="item-price">₹99</span>
+                </div>
+                <p class="item-desc">Juicy patty with fresh veggies and secret sauce.</p>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <span class="item-name">Cheese Garlic Bread</span>
+                    <span class="item-price">₹130</span>
+                </div>
+                <p class="item-desc">Crunchy bread loaded with melted cheese.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 Mikey Metrics Agency | Designed for Cuku Cafe
+    </footer>
+
+</body>
+</html>
