@@ -1,45 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mikey Metrics | Digital Menu</title>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <title>Cuku Cafe | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;900&display=swap" rel="stylesheet">
     <style>
-        body { background: #121212; color: white; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
-        .menu-card { background: #1e1e1e; border-radius: 15px; padding: 20px; border: 1px solid #333; max-width: 300px; margin: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .price { color: #f39c12; font-size: 22px; font-weight: bold; }
-        .order-btn { background: #f39c12; color: black; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px; }
+        body { background: #0a0a0a; color: #fff; font-family: 'Outfit', sans-serif; text-align: center; margin: 0; }
+        nav { padding: 20px; background: #111; display: flex; justify-content: center; gap: 20px; }
+        nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; }
+        nav a:hover { color: #e67e22; }
+        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        h1 { font-size: 4rem; color: #e67e22; margin: 0; }
+        .btn { background: #e67e22; color: #000; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 20px; display: inline-block; }
     </style>
 </head>
 <body>
-    <h2 style="color: #f39c12;">MIKEY METRICS</h2>
-    <p>The Hidden Cafe - Smart Ordering</p>
-    <div class="menu-card">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300" style="width:100%; border-radius:10px;">
-        <h3>Cold Coffee Special</h3>
-        <p class="price">₹120</p>
-        <p>Stock: <span id="stk">...</span></p>
-        <button class="order-btn" onclick="order()">ORDER NOW</button>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="hero">
+        <h1>CUKU CAFE</h1>
+        <p>Ranchi's Best Vibe. Now Digital.</p>
+        <a href="menu.html" class="btn">Explore Menu</a>
     </div>
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyCmX32ch9c2KZrBtXtwVVwE7rhpz9Z-TjI",
-            authDomain: "mikey-metrics-pos.firebaseapp.com",
-            projectId: "mikey-metrics-pos",
-            databaseURL: "https://mikey-metrics-pos-default-rtdb.firebaseio.com",
-            appId: "1:74895184876:web:1d71c3c45abcb7246ba6c9"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.database();
-        db.ref('stock/coffee').on('value', s => { document.getElementById('stk').innerText = s.val() || 0; });
-        function order() {
-            db.ref('stock/coffee').transaction(s => {
-                if(s > 0) { alert("Order Sent to Kitchen! ✅"); return s - 1; }
-                else { alert("Out of Stock!"); return s; }
-            });
-        }
-    </script>
 </body>
 </html>
-
