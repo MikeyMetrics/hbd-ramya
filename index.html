@@ -1,34 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Hidden Cafe | Mikey Metrics</title>
+    <title>Mikey Metrics | Digital Menu</title>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
     <style>
-        body { background: #0f0f0f; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
-        .card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px; border: 1px solid rgba(255,255,255,0.1); max-width: 400px; margin: 20px auto; }
-        img { width: 100%; border-radius: 15px; margin-bottom: 15px; }
-        .price { font-size: 24px; color: #f39c12; font-weight: bold; }
-        .stock-tag { background: #27ae60; padding: 5px 15px; border-radius: 50px; font-size: 14px; }
-        button { background: linear-gradient(45deg, #f39c12, #e67e22); border: none; padding: 15px 30px; color: white; border-radius: 10px; font-size: 18px; cursor: pointer; margin-top: 15px; transition: 0.3s; }
-        button:active { transform: scale(0.95); }
+        body { background: #121212; color: white; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
+        .menu-card { background: #1e1e1e; border-radius: 15px; padding: 20px; border: 1px solid #333; max-width: 300px; margin: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .price { color: #f39c12; font-size: 22px; font-weight: bold; }
+        .order-btn { background: #f39c12; color: black; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px; }
     </style>
 </head>
 <body>
-    <h1 style="color: #f39c12;">THE HIDDEN CAFE</h1>
-    <p>Powered by Mikey Metrics</p>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=500" alt="Coffee">
-        <h2>Special Cold Coffee</h2>
+    <h2 style="color: #f39c12;">MIKEY METRICS</h2>
+    <p>The Hidden Cafe - Smart Ordering</p>
+    <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300" style="width:100%; border-radius:10px;">
+        <h3>Cold Coffee Special</h3>
         <p class="price">₹120</p>
-        <span class="stock-tag">In Stock: <span id="stock-count">...</span></span>
-        <br>
-        <button onclick="orderItem()">ORDER NOW</button>
+        <p>Stock: <span id="stk">...</span></p>
+        <button class="order-btn" onclick="order()">ORDER NOW</button>
     </div>
-
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyCmX32ch9c2KZrBtXtwVVwE7rhpz9Z-TjI",
@@ -38,16 +31,12 @@
             appId: "1:74895184876:web:1d71c3c45abcb7246ba6c9"
         };
         firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-
-        database.ref('stock/coffee').on('value', (snapshot) => {
-            document.getElementById('stock-count').innerText = snapshot.val() || 0;
-        });
-
-        function orderItem() {
-            database.ref('stock/coffee').transaction((s) => {
-                if (s > 0) { alert("☕ Order Placed!"); return s - 1; }
-                else { alert("Sold Out!"); return s; }
+        const db = firebase.database();
+        db.ref('stock/coffee').on('value', s => { document.getElementById('stk').innerText = s.val() || 0; });
+        function order() {
+            db.ref('stock/coffee').transaction(s => {
+                if(s > 0) { alert("Order Sent to Kitchen! ✅"); return s - 1; }
+                else { alert("Out of Stock!"); return s; }
             });
         }
     </script>
